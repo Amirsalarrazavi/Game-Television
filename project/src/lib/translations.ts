@@ -1,0 +1,171 @@
+import type { Language } from './types';
+
+export const translations = {
+  en: {
+    createSession: 'Create Session',
+    joinSession: 'Join Game',
+    roomCode: 'Room Code',
+    scanQR: 'Scan QR Code to Join',
+    waiting: 'Waiting for players...',
+    players: 'Players',
+    startGame: 'Start Game',
+    nickname: 'Enter Nickname',
+    join: 'Join',
+    connected: 'Connected',
+    disconnected: 'Disconnected',
+    kicked: 'Kicked',
+    lobby: 'Lobby',
+    tutorialStatus: 'Tutorial',
+    playing: 'Playing',
+    ended: 'Game Ended',
+    settings: 'Settings',
+    language: 'Language',
+    bigText: 'Large Text',
+    colorBlind: 'Color Blind Mode',
+    kidsMode: 'Kids Mode',
+    maxPlayers: 'Max Players',
+    networkCheck: 'Network Health',
+    good: 'Good',
+    fair: 'Fair',
+    poor: 'Poor',
+    volume: 'Volume Test',
+    rules: 'Rules & Safety',
+    rulesText: 'Be respectful, play fair, and have fun!',
+    accept: 'Accept',
+    reject: 'Reject',
+    kick: 'Kick',
+    lockRoom: 'Lock Room',
+    copyLink: 'Copy Link',
+    linkCopied: 'Link copied!',
+    sessionExpired: 'Session expired',
+    roomFull: 'Room is full',
+    invalidCode: 'Invalid code',
+    reconnecting: 'Reconnecting...',
+    help: 'Help',
+    report: 'Report Issue',
+    teamA: 'Team A',
+    teamB: 'Team B',
+    score: 'Score',
+    round: 'Round',
+    nextRound: 'Next Round',
+    gameCards: {
+      name_game: {
+        title: 'Name & Family+',
+        description: 'Quick thinking word game',
+      },
+      song_guess: {
+        title: 'Guess the Song',
+        description: 'Music trivia challenge',
+      },
+      spy: {
+        title: 'Spy Game',
+        description: 'Find the impostor',
+      },
+    },
+    onboarding: {
+      welcome: 'Welcome to the Party!',
+      step1: 'Your phone is the controller',
+      step2: 'TV shows the action',
+      step3: 'Take turns and have fun',
+      step4: 'Need help? Tap the ? button',
+      start: 'Start Playing',
+      skip: 'Skip Tutorial',
+    },
+    tutorial: {
+      tap: 'Tap Test',
+      tapHere: 'Tap here!',
+      success: 'Great!',
+    },
+  },
+  fa: {
+    createSession: 'ساخت بازی',
+    joinSession: 'پیوستن به بازی',
+    roomCode: 'کد اتاق',
+    scanQR: 'کد QR را اسکن کنید',
+    waiting: 'در انتظار بازیکنان...',
+    players: 'بازیکنان',
+    startGame: 'شروع بازی',
+    nickname: 'نام مستعار',
+    join: 'پیوستن',
+    connected: 'متصل',
+    disconnected: 'قطع شده',
+    kicked: 'اخراج شده',
+    lobby: 'سالن',
+    tutorialStatus: 'آموزش',
+    playing: 'در حال بازی',
+    ended: 'پایان بازی',
+    settings: 'تنظیمات',
+    language: 'زبان',
+    bigText: 'متن بزرگ',
+    colorBlind: 'حالت رنگ کوری',
+    kidsMode: 'حالت کودک',
+    maxPlayers: 'حداکثر بازیکنان',
+    networkCheck: 'وضعیت شبکه',
+    good: 'خوب',
+    fair: 'متوسط',
+    poor: 'ضعیف',
+    volume: 'تست صدا',
+    rules: 'قوانین و ایمنی',
+    rulesText: 'محترمانه رفتار کنید، منصفانه بازی کنید و لذت ببرید!',
+    accept: 'قبول',
+    reject: 'رد',
+    kick: 'اخراج',
+    lockRoom: 'قفل اتاق',
+    copyLink: 'کپی لینک',
+    linkCopied: 'لینک کپی شد!',
+    sessionExpired: 'جلسه منقضی شد',
+    roomFull: 'اتاق پر است',
+    invalidCode: 'کد نامعتبر',
+    reconnecting: 'در حال اتصال مجدد...',
+    help: 'راهنما',
+    report: 'گزارش مشکل',
+    teamA: 'تیم الف',
+    teamB: 'تیم ب',
+    score: 'امتیاز',
+    round: 'دور',
+    nextRound: 'دور بعدی',
+    gameCards: {
+      name_game: {
+        title: 'اسم و فامیل+',
+        description: 'بازی سرعت کلمه',
+      },
+      song_guess: {
+        title: 'حدس آهنگ',
+        description: 'چالش موسیقی',
+      },
+      spy: {
+        title: 'بازی جاسوس',
+        description: 'جاسوس را پیدا کن',
+      },
+    },
+    onboarding: {
+      welcome: 'به مهمونی خوش اومدی!',
+      step1: 'موبایلت دسته بازیه',
+      step2: 'تلویزیون اتفاقا رو نشون میده',
+      step3: 'نوبتی بازی کن و حال کن',
+      step4: 'کمک لازم؟ دکمه ؟ رو بزن',
+      start: 'شروع بازی',
+      skip: 'رد شدن از آموزش',
+    },
+    tutorial: {
+      tap: 'تست لمس',
+      tapHere: 'اینجا رو بزن!',
+      success: 'عالی!',
+    },
+  },
+};
+
+export function t(key: string, lang: Language = 'en'): string {
+  const keys = key.split('.');
+  let value: any = translations[lang];
+
+  for (const k of keys) {
+    if (value && typeof value === 'object') {
+      value = value[k];
+    } else {
+      return key;
+    }
+  }
+
+  return typeof value === 'string' ? value : key;
+}
